@@ -1,0 +1,293 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: API specification
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: ai
+    description: AI-powered services
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+
+  /ai/chat:
+    post:
+      operationId: aiChat
+      tags: [ai]
+      summary: AI chat completion
+      description: Send messages to the STAGEONE AI assistant and receive a response
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AiChatRequest"
+      responses:
+        "200":
+          description: Successful AI response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AiChatResponse"
+        "400":
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: AI service error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /ai/content:
+    post:
+      operationId: generateContent
+      tags: [ai]
+      summary: Generate marketing or business content
+      description: Generate high-quality content for various business use cases
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ContentGenerationRequest"
+      responses:
+        "200":
+          description: Generated content
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContentGenerationResponse"
+        "400":
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: AI service error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /ai/business:
+    post:
+      operationId: businessAssistant
+      tags: [ai]
+      summary: Business strategy assistant
+      description: Get AI-powered business strategy and automation recommendations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BusinessAssistantRequest"
+      responses:
+        "200":
+          description: Business advice and recommendations
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BusinessAssistantResponse"
+        "400":
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: AI service error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error
+
+    AiChatMessage:
+      type: object
+      properties:
+        role:
+          type: string
+          enum: [user, assistant, system]
+        content:
+          type: string
+      required:
+        - role
+        - content
+
+    AiChatRequest:
+      type: object
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: "#/components/schemas/AiChatMessage"
+          minItems: 1
+        stream:
+          type: boolean
+          default: false
+      required:
+        - messages
+
+    AiChatResponse:
+      type: object
+      properties:
+        message:
+          $ref: "#/components/schemas/AiChatMessage"
+        usage:
+          $ref: "#/components/schemas/TokenUsage"
+        model:
+          type: string
+      required:
+        - message
+        - model
+
+    ContentType:
+      type: string
+      enum:
+        - blog_post
+        - social_media
+        - email_campaign
+        - landing_page_copy
+        - ad_copy
+        - case_study
+
+    ContentGenerationRequest:
+      type: object
+      properties:
+        type:
+          $ref: "#/components/schemas/ContentType"
+        topic:
+          type: string
+        tone:
+          type: string
+          enum: [professional, conversational, authoritative, inspiring]
+          default: professional
+        keywords:
+          type: array
+          items:
+            type: string
+        targetAudience:
+          type: string
+        additionalContext:
+          type: string
+      required:
+        - type
+        - topic
+
+    ContentGenerationResponse:
+      type: object
+      properties:
+        content:
+          type: string
+        title:
+          type: string
+        type:
+          $ref: "#/components/schemas/ContentType"
+        model:
+          type: string
+        usage:
+          $ref: "#/components/schemas/TokenUsage"
+      required:
+        - content
+        - type
+        - model
+
+    BusinessDomain:
+      type: string
+      enum:
+        - automation
+        - marketing
+        - operations
+        - growth_strategy
+        - ai_integration
+        - brand_positioning
+
+    BusinessAssistantRequest:
+      type: object
+      properties:
+        question:
+          type: string
+        domain:
+          $ref: "#/components/schemas/BusinessDomain"
+        businessContext:
+          type: string
+        industry:
+          type: string
+      required:
+        - question
+
+    BusinessAssistantResponse:
+      type: object
+      properties:
+        answer:
+          type: string
+        recommendations:
+          type: array
+          items:
+            type: string
+        nextSteps:
+          type: array
+          items:
+            type: string
+        domain:
+          $ref: "#/components/schemas/BusinessDomain"
+        model:
+          type: string
+        usage:
+          $ref: "#/components/schemas/TokenUsage"
+      required:
+        - answer
+        - model
+
+    TokenUsage:
+      type: object
+      properties:
+        promptTokens:
+          type: integer
+        completionTokens:
+          type: integer
+        totalTokens:
+          type: integer
+      required:
+        - promptTokens
+        - completionTokens
+        - totalTokens

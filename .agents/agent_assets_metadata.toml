@@ -1,0 +1,20 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "7QzjcTzWiZopT8J2ssmzJ"
+uri = "file://artifacts/stageone/public/team-1.png"
+type = "image"
+title = "team member portrait 1"
+
+[[generated]]
+id = "V1wkERmJtUjcLDTXI4os-"
+uri = "file://artifacts/stageone/public/team-2.png"
+type = "image"
+title = "team member portrait 2"
+
+[[generated]]
+id = "Vio0YdphrZxnrNxF4_54x"
+uri = "file://artifacts/stageone/public/team-3.png"
+type = "image"
+title = "team member portrait 3"
