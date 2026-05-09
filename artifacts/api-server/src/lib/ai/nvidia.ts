@@ -20,8 +20,8 @@ export const nvidiaClient = createNvidiaClient();
 // Models mapped to use cases
 export const NVIDIA_MODELS = {
   chat: "meta/llama-3.1-70b-instruct",
-  content: "mistralai/mistral-large-2-instruct",
-  business: "nvidia/llama-3.1-nemotron-70b-instruct",
+  content: "meta/llama-3.1-70b-instruct",
+  business: "meta/llama-3.1-70b-instruct",
 } as const;
 
 export type NvidiaModel = (typeof NVIDIA_MODELS)[keyof typeof NVIDIA_MODELS];

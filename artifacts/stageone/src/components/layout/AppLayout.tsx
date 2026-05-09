@@ -3,7 +3,6 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { motion, AnimatePresence, useScroll, useSpring, useTransform } from "framer-motion";
 import { useLocation } from "wouter";
-import { CursorEffect } from "@/components/effects/CursorEffect";
 import { ParticleField } from "@/components/effects/ParticleField";
 
 function PageProgressBar() {
@@ -39,8 +38,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col font-sans cursor-none relative">
-      <CursorEffect />
+    <div className="min-h-screen bg-background text-foreground flex flex-col font-sans relative">
       <PageProgressBar />
       <ScrollProgress />
       <Navbar />

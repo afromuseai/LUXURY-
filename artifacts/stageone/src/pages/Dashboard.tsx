@@ -618,7 +618,7 @@ export default function Dashboard() {
   const currentNav = NAV_ITEMS.find((n) => n.id === section);
 
   return (
-    <div className="min-h-screen bg-background flex flex-col cursor-none">
+    <div className="min-h-screen bg-background flex flex-col cursor-auto">
       {/* Top bar */}
       <div className="flex items-center justify-between px-5 py-4 glass-panel border-b border-white/6 z-10 flex-shrink-0">
         <div className="flex items-center gap-3">

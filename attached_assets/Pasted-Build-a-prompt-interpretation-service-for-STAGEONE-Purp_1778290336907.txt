@@ -1,0 +1,109 @@
+Build a prompt interpretation service for STAGEONE.
+
+Purpose:
+Convert user prompts into structured UI generation plans.
+
+Input:
+Natural language product request.
+
+Output JSON:
+- productType
+- industry
+- visualStyle
+- colorPalette
+- layoutSections
+- UI components
+- designMood
+- targetAudience
+- CTA suggestions
+
+Requirements:
+- Use NVIDIA LLM APIs
+- Strong prompt engineering
+- Modular architecture
+- JSON validation
+- Error handling
+
+Display the interpreted generation plan in the UI before image generation begins.
+
+
+
+
+Build the STAGEONE image generation pipeline.
+
+Purpose:
+Generate UI/UX concept images from interpreted generation plans.
+
+Requirements:
+- NVIDIA image generation integration
+- Generate landing page and dashboard concepts
+- Streaming/loading states
+- Retry handling
+- Image caching
+- Responsive image viewer
+- Download image support
+
+UI Requirements:
+- Cinematic loading animations
+- Generation progress timeline
+- Elegant reveal animations
+- Premium dark presentation
+
+The output should feel like an AI creative studio.
+
+
+
+
+Build the STAGEONE frontend code generation system.
+
+Purpose:
+Convert interpreted UI plans into React + Tailwind frontend code.
+
+Requirements:
+- Use NVIDIA coding models
+- Generate component-based React code
+- Tailwind styling
+- Responsive layouts
+- Clean folder structure
+- Reusable components
+- Syntax highlighted output
+
+Features:
+- Copy code
+- Download TXT
+- Download ZIP
+- Live code preview container
+
+The generated code should visually match the generated UI concept image as closely as possible.
+
+
+
+
+
+Build the STAGEONE AI generation workspace UI.
+
+Layout:
+- Left sidebar:
+  • prompt history
+  • generation settings
+  • saved prompts
+
+- Center:
+  • generated UI image preview
+  • image zoom
+  • cinematic reveal animation
+
+- Right sidebar:
+  • generated React/Tailwind code
+  • syntax highlighting
+  • copy/download buttons
+
+Features:
+- Resizable panels
+- Smooth transitions
+- Responsive design
+- Keyboard shortcuts
+- Streaming updates
+
+Design:
+Luxury futuristic AI platform aesthetic.

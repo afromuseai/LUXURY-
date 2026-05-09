@@ -311,10 +311,6 @@ html {
   box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(201,168,76,0.08);
 }
 
-/* ─── NEW: Cursor hide for custom cursor ───────────────────────── */
-@media (pointer: fine) {
-  .cursor-none, .cursor-none * { cursor: none !important; }
-}
 
 /* ─── NEW: Tab content fade ─────────────────────────────────────── */
 @keyframes tab-in {

@@ -24,3 +24,16 @@ export type {
   ChatbotBuilderParams,
   ChatbotPersonality,
 } from "./chatbotBuilderService";
+export { generateUIConcept } from "./generateService";
+export type {
+  GenerateParams,
+  GenerateResult,
+  GenerateConcept,
+} from "./generateService";
+export { interpretPrompt } from "./promptInterpreterService";
+export type { GenerationPlan } from "./promptInterpreterService";
+export { runDesignIntelligence } from "./designIntelligenceEngine";
+export type { DesignIntelligenceResult } from "./designIntelligenceEngine";
+export { generateUIImage } from "./imageGeneratorService";
+export type { ImageGenerationResult } from "./imageGeneratorService";
+export { generateCode } from "./codeGeneratorService";
